@@ -1,5 +1,5 @@
 :root{
-
+    --font-size: 20px;
 }
 *{
     margin: 0;
@@ -29,7 +29,6 @@ body{
 /* Main content */
 .main-content{
     text-align: center;
-    border: 1px solid red;
 }
 .book-grid{
     display: grid;
@@ -41,12 +40,13 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 20px;
+    font-size: var(--font-size);
     background-color: white;
     border-radius: 1rem;
     text-align: left;
     padding: 1rem;
     position: relative;
+    gap: 1rem;
 }
 .close-button{
     position: absolute;
@@ -54,11 +54,29 @@ body{
     top: 1rem;
     width: 1rem;
     height: 1rem;
-    opacity: 0.3;
+    opacity: 0.4;
     transition: opacity 0.5s;
 }
 .close-button:hover{
     opacity: 1;
     transition: opacity 0.5s;
     cursor: pointer;
+}
+
+.read-status{
+    background-color: rgb(207, 81, 81);
+    color: white;
+    text-align: center;
+    align-self: center;
+    font-size: var(--font-size);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+}
+.read-status.read{
+    background-color: rgb(62, 220, 62);
+    content: "Read";
 }

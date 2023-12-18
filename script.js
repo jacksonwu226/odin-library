@@ -16,12 +16,13 @@ function removeBook(removeBook){
 
 const book_1 = new Book("Book1", "Author1", 694, false);
 const book_2 = new Book("Book2", "Author2", 694, false);
-const book_3 = new Book("book3", "Author3", 694, false);
+const book_3 = new Book("book3", "Author3", 694, true);
 addBookToLibrary(book_1);
 addBookToLibrary(book_2);
 addBookToLibrary(book_3);
 
 const book_grid = document.querySelector(".book-grid");
+
 function addBookToPage(book){
     const book_card = document.createElement('div');
     book_card.classList.add('book-card');
@@ -41,6 +42,7 @@ function addBookToPage(book){
     book_card.appendChild(book_author);
     book_card.appendChild(book_page)
 
+    // creating close button
     const close_btn = document.createElement('div');
     close_btn.textContent = "✕"
     close_btn.classList.add('close-button');
@@ -49,7 +51,29 @@ function addBookToPage(book){
         removeBook(book);
     }
     book_card.appendChild(close_btn);
-    
+
+    // creating read button/status
+    const read_status = document.createElement('button');
+    read_status.classList.add('read-status');
+    if(book.read)
+    {
+        read_status.classList.add('read');
+        read_status.textContent = "Read"
+    }
+    else{
+        read_status.textContent = "Not Read"
+    }
+    read_status.onclick = () =>{
+        read_status.classList.toggle('read');
+        if(read_status.classList.contains("read")){
+            read_status.textContent = "Read";
+        }
+        else{
+            read_status.textContent = "Not Read";
+        }
+    }
+    book_card.appendChild(read_status);
+
     book_grid.appendChild(book_card);
 }
 

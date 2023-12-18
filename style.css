@@ -46,4 +46,19 @@ body{
     border-radius: 1rem;
     text-align: left;
     padding: 1rem;
+    position: relative;
+}
+.close-button{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 1rem;
+    height: 1rem;
+    opacity: 0.3;
+    transition: opacity 0.5s;
+}
+.close-button:hover{
+    opacity: 1;
+    transition: opacity 0.5s;
+    cursor: pointer;
 }

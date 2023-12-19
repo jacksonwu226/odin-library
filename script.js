@@ -1,10 +1,15 @@
 let myLibrary = []
-
-function Book (title, author, pages, read){
+const add_new_book_dialog = document.getElementById("add-new-book-dialog");
+const submit_new_book_btn = document.getElementById("submit-new-book-btn");
+const cancel_new_book_btn = document.getElementById("cancel-new-book-btn");
+const add_new_book_btn = document.querySelector(".add-book-btn");
+const form = document.getElementById('add-new-book-form');
+ 
+function Book (title, author, pages, isRead){
     this.title = title;
     this.author = author;
     this.page = pages;
-    this.read = read;
+    this.isRead = isRead;
 }
 
 function addBookToLibrary(book){
@@ -55,7 +60,7 @@ function addBookToPage(book){
     // creating read button/status
     const read_status = document.createElement('button');
     read_status.classList.add('read-status');
-    if(book.read)
+    if(book.isRead)
     {
         read_status.classList.add('read');
         read_status.textContent = "Read"
@@ -77,7 +82,41 @@ function addBookToPage(book){
     book_grid.appendChild(book_card);
 }
 
+const getBookFromInput = () => {
+    const title = document.getElementById('input-title').value;
+    const author = document.getElementById('input-author').value;
+    const pages = document.getElementById('input-pages').value;
+    const isRead = document.getElementById('input-read').checked;
+    return new Book(title, author, pages, isRead);
+  }
+
+add_new_book_btn.addEventListener("click", (e) =>{
+    add_new_book_dialog.showModal();
+})
+
+// Add an event listener to the form for form submission
+form.addEventListener('submit', function (event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+  
+    // Access the form elements directly
+    const book = getBookFromInput();
+    console.log(book);
+    addBookToLibrary(book);
+    addBookToPage(book);
+    // Reset the form for a new entry 
+    form.reset();
+    add_new_book_dialog.close();
+  });
+
+cancel_new_book_btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    form.reset();
+    add_new_book_dialog.close();
+});
+
 for(const book of myLibrary)
 {
     addBookToPage(book);
 }
+

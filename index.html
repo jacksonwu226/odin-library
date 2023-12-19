@@ -12,12 +12,32 @@
     </div>
     <div class="main-content">
         <div class="book-grid">
-            
+        <button class="add-book-btn">Add New Book</button>
         </div>
     </div>
     <div class="footer">
-        <p>Footer</p>
+        <p>
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+        Jackson Wu
+        </p>
     </div>
+    <dialog id="add-new-book-dialog">
+        <div class="modal-container">
+            <p>Add a New Book</p>
+            <form id="add-new-book-form">
+                <input type="text" id="input-title" name="title" placeholder="Title" required/>
+                <input type="text" id="input-author" name="author" placeholder="Author" required/>
+                <input type="number" id="input-pages" name="read" placeholder="Pages" required/>
+                <label for="input-read">Read</label>
+                <input type="checkbox" id="input-read" name="read" value="true">
+                <button id="submit-new-book-btn" value="default">Submit</button>
+                <button id="cancel-new-book-btn" formmethod="dialog">Cancel</button>
+            </form>
+        </div>
+    </dialog>
     <script src="./script.js"></script>
 </body>
 </html>
